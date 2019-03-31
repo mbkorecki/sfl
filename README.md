@@ -7,29 +7,29 @@ A typical program consists of two parts - definition part and calculation part. 
 Two example files are included in the examplePrograms folder - one of them is evaluated, the other does not pass semantic analysis and outputs a list of errors. 
 
 Below the grammar of the language is presented:
+```
+   Program -> Defines Calculation  
+   Defines -> let <identifier> := Lambda Exp Defines | <empty string>    
+   Lambda  -> ^ <identifier> IDlist ->  | <empty string>    
+   IDlist  -> . ^ <identifier> IDlist  | <empty string>  
+   Calculation -> Expr Calculation | <empty string>  
+   Expr -> T E’  
+   E’ -> + T E’| - T E’| <empty string>  
+   T -> F T’  
+   T’ -> * F T’ | / F T’ | % F T' | <empty string>  
+   F  -> [Expr Rel Expo ? Expr : Expr]  
+       | ( Expr )  
+       | <integer>  
+       | <identifier> Args  
+   Args -> { Explist }  
+   Args -> .  
+   Explist -> Expr Explist’.  
+   Explist’ -> Expr Explist’.  
+   Explist’ -> .  
+   Rel   -> < | <= | = | >= | > | <>  
+```
 
-   Program -> Defines Calculation
-   Defines -> let <identifier> := Lambda Exp Defines | <empty string>
-   Lambda  -> ^ <identifier> IDlist ->  | <empty string>
-   IDlist  -> . ^ <identifier> IDlist  | <empty string>
-   Calculation -> Expr Calculation | <empty string>
-   Expr -> T E’
-   E’ -> + T E’| - T E’| <empty string>
-   T -> F T’
-   T’ -> * F T’ | / F T’ | % F T' | <empty string>
-   F  -> [Expr Rel Expo ? Expr : Expr]
-       | ( Expr )
-       | <integer>
-       | <identifier> Args
-   Args -> { Explist }
-   Args -> .
-   Explist -> Expr Explist’.
-   Explist’ -> Expr Explist’.
-   Explist’ -> .
-   Rel   -> < | <= | = | >= | > | <>
-
-
-To run a program x.txt written in sml compile sml.hs with ghc like this:
-$ ghc sml.hs
-And run it with the file as input like this:
-$ ./sml < x.txt
+To run a program x.txt written in sml compile sml.hs with ghc like this:  
+$ ghc sml.hs  
+And run it with the file as input like this:  
+$ ./sml < x.txt  
