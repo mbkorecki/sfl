@@ -1,0 +1,8 @@
+let x:=42
+let f:=^x -> g{x} + h{x}
+let g:=^y -> x
+let h:=^x -> 2*x
+x
+f{1}
+g{1}
+h{1}

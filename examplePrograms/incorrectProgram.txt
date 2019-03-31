@@ -1,0 +1,11 @@
+let x:=z
+let y:=x{42} + f{42}
+let f:=^x -> x+1
+let g:=f{42 0}
+let f:=^x.^y -> x+y
+let h:=^x.^y.^x -> x+y
+let ff := f
+f{42 43}
+f{42}
+f
+q
